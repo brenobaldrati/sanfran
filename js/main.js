@@ -66,8 +66,9 @@ function init() {
   overlay.setBend( 100 );
 
   secondoverlay.setPosition( 0, -3, 5 );
+  secondoverlay.setRotation( 0, 180, 0 );
   secondoverlay.setScale( 0.1, 0.1, 0.1 );
-  secondoverlay.setBend( -100 );
+  secondoverlay.setBend( 100 );
 
   window.addEventListener( 'resize', onWindowResize, false );
   window.addEventListener( 'keydown', onkey, false);

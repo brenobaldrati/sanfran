@@ -20,6 +20,11 @@ Overlay = ( function() {
     this.overlay.position.set( x, y, z );
   };
 
+  Overlay.prototype.setRotation = function( x, y, z ) {
+    var p = Math.PI / 180;
+    this.overlay.rotation.set( x * p , y * p, z * p );
+  };
+
   Overlay.prototype.setScale = function( x, y, z ) {
     this.overlay.scale.set( x, y, z );
   };
