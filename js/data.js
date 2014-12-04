@@ -7,8 +7,8 @@ var panos = [
       "width": 63, "height": 30
     },
     "secondoverlay": {
-      "url": "secondoverlay 2.jpg",
-      "width": 63, "height": 30
+      "url": "secondoverlay 1.png",
+      "width": 63, "height": 160
     },
     "image": "chapter1.jpg",
     "audio": "Chapter_1_final.ogg",
@@ -17,13 +17,13 @@ var panos = [
   },
   {
     "title": "Chapter 2",
-    "owner": " Alexandre Duret-Lutz",
+    "owner": " Breno Baldrati",
     "overlay": {
       "url": "overlay 2.png",
       "width": 63, "height": 30
     },
     "secondoverlay": {
-      "url": "secondoverlay 2.jpg",
+      "url": "secondoverlay2.png",
       "width": 63, "height": 30
     },
     "image": "chapter2.jpg",
@@ -39,7 +39,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay 3.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter3.jpg",
@@ -71,7 +71,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay 5.png",
         "width": 63, "height": 30
       },
       "image": "chapter5.jpg",
@@ -86,7 +86,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay 6.png",
         "width": 63, "height": 30
       },
       "image": "chapter6.jpg",
@@ -102,7 +102,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay7.png",
         "width": 63, "height": 30
       },
       "image": "chapter7.jpg",
@@ -117,7 +117,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay8.png",
         "width": 63, "height": 30
       },
       "image": "chapter8.jpg",
@@ -128,15 +128,15 @@ var panos = [
       "title": "Chapter 9 ",
       "owner": "Breno Baldrati",
       "overlay": {
-        "url": "overlay 10.png",
+        "url": "overlay 9.png",
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay9.png",
         "width": 63, "height": 30
       },
-      "image": "chapter10.jpg",
-      "audio": "chapter_10_final.ogg",
+      "image": "chapter9.jpg",
+      "audio": "chapter_9_final.ogg",
       "source": "me",
   },
   {
@@ -147,7 +147,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay10.png",
         "width": 63, "height": 30
       },
       "image": "chapter10.jpg",
@@ -162,7 +162,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay11.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter11.jpg",
@@ -177,7 +177,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay12.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter12.jpg",
@@ -192,7 +192,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay13.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter13.jpg",
@@ -208,7 +208,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay14.png",
         "width": 63, "height": 30
       },
       "image": "chapter14.jpg",
@@ -223,11 +223,11 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay15.png",
         "width": 63, "height": 30
       },
-      "image": "chapter14.jpg",
-      "audio": "chapter_14_final.ogg",
+      "image": "chapter15.jpg",
+      "audio": "chapter_15_final.ogg",
       "source": "me",
   },
   {
@@ -238,7 +238,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay16.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter16.jpg",
@@ -253,7 +253,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay17.png",
         "width": 63, "height": 30
       },
       "image": "chapter17.jpg",
@@ -268,7 +268,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay18.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter18.jpg",
@@ -283,7 +283,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay19.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter19.jpg",
@@ -298,7 +298,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay20.png",
         "width": 63, "height": 30
       },
       "image": "chapter20.jpg",
@@ -313,7 +313,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay21.png",
         "width": 63, "height": 30
       },
       "image": "chapter21.jpg",
@@ -328,7 +328,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay22.jpg",
         "width": 63, "height": 30
       },
       "image": "chapter22.jpg",
@@ -343,7 +343,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay23.png",
         "width": 63, "height": 30
       },
       "image": "chapter23.jpg",
@@ -358,7 +358,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay24.png",
         "width": 63, "height": 30
       },
       "image": "chapter24.jpg",
@@ -373,7 +373,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "ssecondoverlay25.png",
         "width": 63, "height": 30
       },
       "image": "chapter25.jpg",
@@ -388,7 +388,7 @@ var panos = [
         "width": 63, "height": 30
       },
       "secondoverlay": {
-        "url": "secondoverlay 2.jpg",
+        "url": "secondoverlay26.png",
         "width": 63, "height": 30
       },
       "image": "chapter26.jpg",

@@ -1,0 +1,60 @@
+body { margin: 0; padding: 0; zoom: 1; }
+h1, h2, p { margin: 0; padding: 0; }
+
+.container { width: 960px; margin: 0 auto; }
+
+.section-intro h1 { font: 75px/68px 'Abril Fatface', Georgia, serif; text-transform: uppercase; color: #333499; margin: 200px 0 90px 0; text-align: center; }
+.section-intro .small { font: 30px/32px 'Playfair Display', Georgia, serif; letter-spacing: .06em; margin-left: 30px; display: block; }
+.section-intro h1 em { display: block; font-style: normal; }
+.section-intro h1 i { text-transform: lowercase; letter-spacing: 0; color: #7a6; }
+.section-intro .divider { width: 30px; padding: 30px 0 0 0; border-top: 1px solid #999; margin: 30px auto 0 auto; }
+.section-intro .wrapper { width: 100%; text-align: center; margin: 0 auto 120px auto; }
+.section-intro .colophon { width: 300px; display: inline-block; vertical-align: top; text-align: left; margin: 0 7px 30px 10px; }
+.section-intro p { color: #999; font: 20px 'Alegreya', Georgia, serif; margin: 0 auto 10px auto; max-width: 460px; }
+.section-intro .normal { color: #999; font: 14px/20px 'Alegreya', Georgia, serif; margin: 0 auto 10px auto; max-width: 460px; }
+.section-intro .caption { margin-top: 180px; }
+.section-intro a { color: #000; text-decoration: none; }
+.section-intro a:hover { background-color: #ddd; }
+
+
+
+.button {
+    font-family: "Alegreya", sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333499;
+    border: 3px solid;
+    padding: 0.25em 0.75em;
+    -moz-box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    -webkit-box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+}
+.button:active {
+    -moz-box-shadow: 0px 0px 0px 0px;
+    -webkit-box-shadow: 0px 0px 0px 0px;
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+
+
+
+/* ---------------------- */
+/* Device-specific styles */
+/* ---------------------- */
+
+
+
+
+/* Sub-tablet <768px */
+@media (max-width: 768px) {
+
+    .section-intro { width: 100%; }
+    .section-intro .small { margin: 0 20px; }
+    .section-intro p { max-width: 460px; width: auto; padding: 0 20px; }
+  .section-intro .wrapper { width: 320px; text-align: center; margin: 0 auto 120px auto; }
+
+}
