@@ -1,14 +1,10 @@
 
-
-
-var parameters = Util.parseURLSearch();
-
-var camera, scene, renderer;
-var vrEffect;
+var camera, scene, renderer;var vrEffect;
 var vrControls;
 var counter = 0;
-var pano, overlay, listener, sound, controls;
-
+var pano, controls, cursor, effect;
+var sound; // Sound class -> sound.js
+var overlay, secondoverlay; // Overlay class -> overlay.js
 
 function init() {
 
@@ -29,7 +25,6 @@ function init() {
   pano.renderDepth = 2;
   pano.rotation.set( 0, -90 * Math.PI / 180, 0 );
 
-
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.autoClear = false;
   renderer.setClearColor( 0x000000 );
@@ -37,16 +32,19 @@ function init() {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 
+  // cursor
+
+  cursor = new VRCursor();
+  cursor.ready.then( function() {
+    scene.add( cursor.layout );
+    cursor.init( renderer.domElement, camera, scene );
+    cursor.enable();
+  } );
+
   // parse url parameter and set appropriate rendering effect.
 
-  if ( parameters.mode === 'cardboard' ) {
-    controls = new THREE.DeviceOrientationControls( camera );
-    effect = new THREE.StereoEffect( renderer );
-  } else {
-    controls = new THREE.VRControls( camera );
-    effect = new THREE.VREffect( renderer );
-  }
-  effect.setSize( window.innerWidth, window.innerHeight );
+  controls = new THREE.VRControls( camera );
+  effect = new THREE.VREffect( renderer );
 
   // listen for double clicks to initiate full-screen/VR mode.
 
@@ -54,70 +52,45 @@ function init() {
     effect.setFullScreen( true );
   } );
 
-  //add background sound
+  // sound
 
-  listener = new THREE.AudioListener();
-  camera.add( listener );
-
+  sound = new Sound( scene, camera );
 
   scene.add( pano );
 
-  overlay = new THREE.Object3D();
-  secondoverlay = new THREE.Object3D();
+  overlay = new Overlay(scene);
+  secondoverlay = new Overlay(scene);
 
-  var mesh = new THREE.Mesh(
-    new THREE.PlaneGeometry( 63, 30, 20, 20 ),
-    new THREE.MeshBasicMaterial( { transparent: true, opacity: 1, side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture( 'images/background-overlay.png' ) } )
-  );
+  overlay.setPosition( 0, -3, -5 );
+  overlay.setScale( 0.1, 0.1, 0.1 );
+  overlay.bend( 100 );
 
+  secondoverlay.setPosition( 0, -3, 5 );
+  secondoverlay.setScale( 0.1, 0.1, 0.1 );
+  secondoverlay.bend( -100 );
 
-  overlay.add( mesh );
-  overlay.position.set( 0, -3, -5 );
-  overlay.scale.set( 0.1, 0.1, 0.1 );
-
-  // secondoverlay.add( mesh);
-  // secondoverlay.position.set(0,-2, -4);
-  // secondoverlay.scale.set(0.1,0.1,0.1);
-
-  Util.bend(overlay, 100);
-  mesh.renderDepth = 1;
-  scene.add( overlay );
-
-  // Util.bend(secondoverlay, 100);
-  // mesh.renderDepth = 1;
-  // scene.add( secondoverlay );
-
-
-  window.addEventListener( 'keydown', onkey, true);
   window.addEventListener( 'resize', onWindowResize, false );
-
-  document.addEventListener('keydown', function(event) { key(event, 1); }, false);
-  document.addEventListener('keyup', function(event) { key(event, -1); }, false);
+  window.addEventListener( 'keydown', onkey, false);
+  window.addEventListener('keyup', function(event) { key(event, -1); }, false);
 }
 
 
 function key(event, sign) {
-    console.log('key');
-    var control = controls.manualControls[String.fromCharCode(event.keyCode).toLowerCase()];
-    // control = {index: 1, sign: 1, active: 0}
-    console.log(control);
-    if (!control)
-        return;
-    if (sign === 1 && control.active || sign === -1 && !control.active)
-        return;
-    control.active = (sign === 1);
-    // control = {index: 1, sign: 1, active: 1}
-    controls.manualRotateRate[control.index] += sign * control.sign;
+  var control = controls.manualControls[String.fromCharCode(event.keyCode).toLowerCase()];
+  if (!control) return;
+  if (sign === 1 && control.active || sign === -1 && !control.active) return;
+  control.active = (sign === 1);
+  controls.manualRotateRate[control.index] += sign * control.sign;
 }
 
 
 function loadPano() {
 
-  Util.stopAudio( sound );
+  sound.stop();
 
   var imgPano = 'images/' + panos[counter].image;
   var imgOverlay = 'images/' + panos[counter].overlay;
-  // var imgSecondOverlay = 'images/' + panos[counter].secondoverlay;
+  var imgSecondOverlay = 'images/' + panos[counter].secondoverlay;
   var audio = 'audio/' + panos[counter].audio;
 
   // load pano
@@ -129,45 +102,30 @@ function loadPano() {
       pano.material.map = THREE.ImageUtils.loadTexture( imgPano, THREE.UVMapping, function() {
 
         new TWEEN.Tween( pano.material )
-          .to({ opacity: 1}, 1000)
+          .to( { opacity: 1 }, 1000 )
           .onComplete( function(){
 
-            new TWEEN.Tween( overlay.children[0].material )
-              .to({ opacity: 1}, 300 )
-              .start();
+            overlay.show( 300 );
+            secondoverlay.show( 300 );
 
-          })
+          } )
           .start();
 
+        sound.play( audio );
 
-        sound = Util.playAudio( audio, listener );
-        scene.add( sound );
-
-      });
-    })
+      } );
+    } )
     .start();
 
   // load overlay
 
-  new TWEEN.Tween( overlay.children[0].material )
-    .to({ opacity: 0}, 300 )
-    .onComplete( function(){
+  overlay.hide( 300, function() {
+    overlay.loadTexture( imgOverlay );
+  } );
 
-      overlay.children[0].material.map = THREE.ImageUtils.loadTexture( imgOverlay, THREE.UVMapping );
-
-    })
-    .start();
-
-    // load SecondOverlay
-    //
-    // new TWEEN.Tween( overlay.children[0].material )
-    // .to({ opacity: 0}, 300 )
-    // .onComplete( function(){
-    //
-    //     overlay.children[0].material.map = THREE.ImageUtils.loadTexture( imgSecondOverlay, THREE.UVMapping );
-    //
-    // })
-    // .start();
+  secondoverlay.hide( 300, function() {
+    secondoverlay.loadTexture( imgSecondOverlay );
+  } );
 
 }
 
@@ -182,7 +140,7 @@ function loadPano() {
 
 function onkey( event ) {
 
-  if (!(event.metaKey || event.altKey || event.ctrlKey)) {
+  if ( !( event.metaKey || event.altKey || event.ctrlKey ) ) {
     event.preventDefault();
   }
 
@@ -211,6 +169,10 @@ function onkey( event ) {
 
     loadPano();
 
+  } else {
+
+    key(event, 1);
+
   }
 
   event.stopPropagation();
@@ -234,12 +196,12 @@ function animate() {
 
 function render() {
   controls.update();
+  if (cursor.enabled) cursor.updatePosition();
   effect.render( scene, camera );
 }
 
 
 
-
-
 init();
+onWindowResize();
 animate();
