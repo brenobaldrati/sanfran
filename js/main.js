@@ -63,11 +63,11 @@ function init() {
 
   overlay.setPosition( 0, -3, -5 );
   overlay.setScale( 0.1, 0.1, 0.1 );
-  overlay.bend( 100 );
+  overlay.setBend( 100 );
 
   secondoverlay.setPosition( 0, -3, 5 );
   secondoverlay.setScale( 0.1, 0.1, 0.1 );
-  secondoverlay.bend( -100 );
+  secondoverlay.setBend( -100 );
 
   window.addEventListener( 'resize', onWindowResize, false );
   window.addEventListener( 'keydown', onkey, false);
@@ -89,14 +89,14 @@ function loadPano() {
   sound.stop();
 
   var imgPano = 'images/' + panos[counter].image;
-  var imgOverlay = 'images/' + panos[counter].overlay;
-  var imgSecondOverlay = 'images/' + panos[counter].secondoverlay;
-  var audio = 'audio/' + panos[counter].audio;
+  var imgOverlay = panos[counter].overlay.url;
+  var imgSecondOverlay = panos[counter].secondoverlay.url;
+  var audioUrl = panos[counter].audio;
 
   // load pano
 
   new TWEEN.Tween( pano.material )
-    .to({ opacity: 0}, 300 )
+    .to({ opacity: 0 }, 300 )
     .onComplete(function() {
 
       pano.material.map = THREE.ImageUtils.loadTexture( imgPano, THREE.UVMapping, function() {
@@ -111,7 +111,7 @@ function loadPano() {
           } )
           .start();
 
-        sound.play( audio );
+        sound.play( audioUrl );
 
       } );
     } )
@@ -196,7 +196,7 @@ function animate() {
 
 function render() {
   controls.update();
-  if (cursor.enabled) cursor.updatePosition();
+  if ( cursor.enabled ) cursor.updatePosition();
   effect.render( scene, camera );
 }
 
